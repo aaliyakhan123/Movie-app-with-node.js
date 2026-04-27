@@ -1,0 +1,49 @@
+<%- include("header") %>
+
+<main>
+  <section class="hero original-banner" aria-label="Netflix banner"></section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <h2>Trending Now</h2>
+      <span><%= movieCount %> movie<%= movieCount === 1 ? "" : "s" %></span>
+    </div>
+
+    <% if (!trendingMovies.length) { %>
+      <div class="empty-state">
+        <h3>No movies added</h3>
+        <a class="btn btn-primary" href="/add">Add Movie</a>
+      </div>
+    <% } else { %>
+      <div class="movie-row">
+        <% trendingMovies.forEach((movie, index) => { %>
+          <% const movieUrl = movie.isDefault ? "/add" : `/movie/${movie._id}`; %>
+          <article class="movie-card">
+            <a class="poster-link" href="<%= movieUrl %>">
+              <span class="rank"><%= index + 1 %></span>
+              <% if (movie.poster) { %>
+                <img src="<%= movie.isDefault ? movie.poster : `/assets/uploads/${movie.poster}` %>" alt="<%= movie.title %> poster">
+              <% } else { %>
+                <div class="poster-placeholder"><%= movie.title.charAt(0).toUpperCase() %></div>
+              <% } %>
+            </a>
+            <div class="movie-card-body">
+              <h3><a href="<%= movieUrl %>"><%= movie.title %></a></h3>
+              <p><%= movie.genre || "Movie" %><% if (movie.releaseYear) { %> &bull; <%= movie.releaseYear %><% } %></p>
+              <% if (!movie.isDefault) { %>
+                <div class="card-actions">
+                  <a class="link-action" href="/edit/<%= movie._id %>">Edit</a>
+                  <form action="/delete/<%= movie._id %>" method="POST" onsubmit="return confirm('Delete this movie?')">
+                    <button class="link-action danger" type="submit">Delete</button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+          </article>
+        <% }) %>
+      </div>
+    <% } %>
+  </section>
+</main>
+
+<%- include("footer") %>

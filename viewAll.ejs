@@ -1,0 +1,49 @@
+<%- include("header") %>
+
+<main class="page-shell">
+  <div class="page-title">
+    <div>
+      <h1>Movies</h1>
+      <p><%= movies.length %> movie<%= movies.length === 1 ? "" : "s" %></p>
+    </div>
+    <a class="btn btn-primary" href="/add">Add Movie</a>
+  </div>
+
+  <% if (!movies.length) { %>
+    <div class="empty-state">
+      <h3>No movies added</h3>
+      <a class="btn btn-primary" href="/add">Add Movie</a>
+    </div>
+  <% } else { %>
+    <div class="movie-grid">
+      <% movies.forEach((movie) => { %>
+        <article class="movie-tile">
+          <a class="tile-poster" href="/movie/<%= movie._id %>">
+            <% if (movie.poster) { %>
+              <img src="/assets/uploads/<%= movie.poster %>" alt="<%= movie.title %> poster">
+            <% } else { %>
+              <div class="poster-placeholder"><%= movie.title.charAt(0).toUpperCase() %></div>
+            <% } %>
+          </a>
+          <div class="tile-content">
+            <div>
+              <h2><a href="/movie/<%= movie._id %>"><%= movie.title %></a></h2>
+              <p><%= movie.genre || "Movie" %><% if (movie.releaseYear) { %> &bull; <%= movie.releaseYear %><% } %></p>
+            </div>
+            <% if (movie.rating) { %>
+              <span class="rating"><%= movie.rating %>/10</span>
+            <% } %>
+          </div>
+          <div class="tile-actions">
+            <a class="btn btn-secondary" href="/edit/<%= movie._id %>">Edit</a>
+            <form action="/delete/<%= movie._id %>" method="POST" onsubmit="return confirm('Delete this movie?')">
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</main>
+
+<%- include("footer") %>

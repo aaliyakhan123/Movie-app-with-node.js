@@ -1,0 +1,79 @@
+<%- include("header") %>
+
+<main class="page-shell form-shell">
+  <form class="movie-form" action="/add" method="POST" enctype="multipart/form-data">
+    <div class="form-head">
+      <h1>Add Movie</h1>
+      <a class="btn btn-secondary" href="/view-all">Back</a>
+    </div>
+
+    <div class="form-grid">
+      <label>
+        <span>Movie Title *</span>
+        <input name="title" required placeholder="Dhurandhar">
+      </label>
+
+      <label>
+        <span>Genre</span>
+        <input name="genre" placeholder="Action, Drama">
+      </label>
+
+      <label>
+        <span>Release Year</span>
+        <input name="releaseYear" type="number" min="1900" max="2099" placeholder="2026">
+      </label>
+
+      <label>
+        <span>Duration</span>
+        <input name="duration" placeholder="2h 10m">
+      </label>
+
+      <label>
+        <span>Rating</span>
+        <input name="rating" type="number" min="0" max="10" step="0.1" placeholder="8.5">
+      </label>
+
+      <label>
+        <span>Language</span>
+        <input name="language" placeholder="Hindi">
+      </label>
+
+      <label>
+        <span>Director</span>
+        <input name="director" placeholder="Director name">
+      </label>
+
+      <label>
+        <span>Cast</span>
+        <input name="cast" placeholder="Actor 1, Actor 2">
+      </label>
+
+      <label>
+        <span>Poster Image</span>
+        <input name="poster" type="file" accept="image/*">
+      </label>
+
+      <label>
+        <span>Banner Image</span>
+        <input name="banner" type="file" accept="image/*">
+      </label>
+    </div>
+
+    <label class="wide-field">
+      <span>Description</span>
+      <textarea name="description" placeholder="Short movie description"></textarea>
+    </label>
+
+    <label class="check-field">
+      <input name="isTrending" type="checkbox" checked>
+      <span>Trending Now</span>
+    </label>
+
+    <div class="form-actions">
+      <a class="btn btn-secondary" href="/view-all">Cancel</a>
+      <button class="btn btn-primary" type="submit">Add Movie</button>
+    </div>
+  </form>
+</main>
+
+<%- include("footer") %>

@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  background: #000;
+  color: #fff;
+}
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 60px;
+  z-index: 10;
+}
+.logo {
+  color: #e50914;
+  font-size: 32px;
+  font-weight: bold;
+}
+.hero {
+  height: 100vh;
+  background: url("/assets/images/bg-image.png") no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+}
+.hero-content {
+  position: relative;
+  max-width: 700px;
+  z-index: 2;
+}
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.hero-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.cta {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cta input {
+  padding: 15px;
+  width: 300px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.cta button {
+  background: #e50914;
+  color: #fff;
+  border: none;
+  padding: 15px 25px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+.cta button:hover {
+  background: #f6121d;
+}
+.trending {
+  padding: 40px 60px;
+  background: #000;
+}
+.trending h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.movie-row {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90vw;
+}
+.movie-card {
+  position: relative;
+  min-width: 180px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.movie-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+.rank {
+  position: absolute;
+  bottom: -10px;
+  left: -30px;
+  font-size: 100px;
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  z-index: 2;
+}
